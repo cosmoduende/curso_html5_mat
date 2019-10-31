@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Fans Mexas de Nirvana</title>
+        <link rel="stylesheet" href="css/styles.css">
+
+        <script>
+
+            function almacena(){
+                var texto = document.getElementById("datos").value;
+                localStorage.setItem("datos", texto);
+            }
+
+            function obtiene(){
+                document.getElementById("datos").value = localStorage.getItem("datos");
+            }
+
+            function borra(){
+                localStorage.removeItem("datos");
+                document.getElementById("datos").value= "datos borrados exitosamente";
+            }
+
+            function almacena_session(){
+                var texto_session = document.getElementById("datos_session").value;
+                sessionStorage.setItem("datos_session", texto_session);
+            }
+
+            function obtiene_session(){
+                document.getElementById("datos_session").value = sessionStorage.getItem("datos_session");
+            }
+
+            function borra(){
+                sessionStorage.removeItem("datos_session");
+                document.getElementById("datos_session").value= "datos borrados exitosamente";
+            }
+
+            var contador = 0;
+            var ini;
+            
+            function cargador(){
+                var lienzo = document.getElementById("lienzo");
+                var lienzo1 = lienzo.getContext('2d');
+                lienzo1.fillStyle = "rgba(0,0,200,0.6)";
+                lienzo1.fillRect(45,70,150,100);
+                lienzo1.beginPath();
+                lienzo1.fillStyle = "rgba(200,0,0,0.6)";
+                lienzo1.strokeStyle = "rgba(0,200,0,0.8)";
+                lienzo1.moveTo(200,150);
+                lienzo1.lineTo(300,150);
+                lienzo1.lineTo(200,400);
+                lienzo1.closePath();
+                lienzo1.fill();
+                lienzo1.stroke();
+                lienzo1.fillStyle = "rgba(100,100,255,0.6)";
+                lienzo1.font = 'italic 40px sans-serif';
+                lienzo1.fillText("¡Hola Mundo Cruel!", 20, 350);
+
+                iniciaAnim();
+            }
+
+            function iniciaAnim(){
+                ini = setInterval(dibujar, 20);
+            }
+
+            function dibujar(){
+                var elLienzo = retornarLienzo("miLienzo");
+                if(elLienzo){
+                    elLienzo.shadowOffsetX = 30;
+                    elLienzo.shadowOffsetY = 30;
+                    elLienzo.shadowBlur = 50 * contador*.5;
+                    elLienzo.shadowColor = "rgba("+contador*.25+",200,100, 0.5)";
+                    elLienzo.fillStyle = "rgba(200,"+contador*.25+",100,0.8)";
+                    elLienzo.fillRect(100,50,250,150);
+                    elLienzo.rotate(contador*Math.PI/180);
+                    elLienzo.scale(-1, 1);
+                    elLienzo.transform(1,0,0,1,-10,0);
+                    contador++;
+                    console.log(contador);
+                    if (contador == 200){
+                        alert('el contador ha llegado a 200');
+                        elLienzo.shadowOffsetX = -10;
+                        elLienzo.shadowOffsetY = -10;
+                    }
+                    else if (contador == 1000){
+                        alert('contador deteniéndose en 1000')
+                        clearInterval(ini);
+                    }
+                }
+            }
+
+            function retornarLienzo(x){
+                var elCanvas = document.getElementById(x);
+                if(elCanvas.getContext){
+                    var elLienzo = elCanvas.getContext('2d');
+                    return elLienzo;
+                }
+                else{
+                    return false;
+                }
+            }
+
+        </script>
+
+    </head>
+    <body onload="cargador()">
+        <header>
+            <h1>Nirvana Music and Video - Club de fans mexas</h1>
+        </header>
+        <nav>
+            <ul>
+                <li>Primer álbum</li>
+                <li>Historia de la banda</li>
+                <li>Únete al club de fans mexas</li>
+                <li>Contáctanos</li>
+                <li>Fotos inéditas</li>
+            </ul>
+        </nav>
+        <aside>
+            <details>
+                <summary>El top 3 de canciones de la semana</summary>
+                <ul>
+                    <li>Canción 1</li>
+                    <li>Canción 2</li>
+                    <li>Canción 3</li>
+                </ul>
+            </details>
+            <h3>Redes sociales</h3>
+            <ul>
+                <li>Twitter</li>
+                <li>Facebook</li>
+                <li>instagram</li>
+            </ul>
+        </aside>
+        <section>
+            <h2>¡Binevenido al sitio mexa número 1 de fans de Nirvana y HTML5, por qué no! </h2>
+            <article>
+                <h3>Aniversario luctuoso de Kurt</h3>
+                <h4>Publicado el <time datetime="2019-10-30"> 30 de octubre de 2019 </time></h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sit amet condimentum mi, suscipit tincidunt ante. Proin lacinia vulputate nisl non tempus. Donec scelerisque sed purus mattis iaculis. Phasellus quis scelerisque dolor. Aliquam erat volutpat. Mauris sit amet facilisis ligula. Integer condimentum lorem id tempor pellentesque. Suspendisse faucibus magna vitae leo fermentum efficitur. Nunc molestie diam quis justo euismod sodales vitae sit amet ipsum. Integer vulputate nisi et ex bibendum finibus. Duis vestibulum diam augue, sit amet rhoncus ex lacinia sed. Vivamus hendrerit ligula sit amet est placerat tincidunt.
+                    </p>
+            </article>
+            <article>
+                <h3>Descurieron nueve nuevos hijos de Kurt Cobain</h3>
+                <h4>Publicado el <time datetime="2019-10-29">29 de octubre de 2019</time></h4>
+                <p>Fusce posuere a urna vitae gravida. Maecenas posuere tortor eget tristique aliquam. Nullam sollicitudin neque pellentesque, luctus magna id, pretium felis. Sed vitae odio eu odio malesuada elementum. Vestibulum eget sollicitudin tortor. Nunc tincidunt faucibus mauris ac feugiat. Proin pharetra erat mauris, vitae ullamcorper nibh dignissim vel. Donec accumsan ante tincidunt egestas scelerisque. Donec maximus ex quis vehicula viverra.</p>
+            </article>
+            <article>
+                    <h3>Probando nuevos input types</h3>
+                    <form method="POST" action="#">
+                        Nombre: <input type="text" placeholder="Por ej. Juan Pérez Pérez"> <br>
+                        Correo: <input type="email" placeholder="correo@dominio.com"><br>
+                        URL de LinkedIn: <input type="url" placeholder="http://linkedin.com/user"> <br>
+                        Edad: <input type="number" min="18" max="60" value="20" step="2"> <br>
+                        Ingresa tu nivel de inglés: <input type="range" min="0" max="100" step="10" value="50"> <br>
+                        Fecha de nacimiento: <input type="date"><br>
+                        Mes de vacaciones: <input type="month"><br>
+                        Semana de vacaciones extra: <input type="week"><br>
+                        Hora de entrada al trabajo: <input type="time"><br>
+                        Color de camiseta: <input type="color">
+                        Define tu contraseña: <input type="password">
+                        Ingresa tu teléfono: <input type="tel"><br>
+                        Qué quieres buscar: <input type="search"><br>
+                        Nivel de estudios: <input type="text" list="estudios" required> <br>
+                            <datalist id="estudios">
+                                <option label="Bach." value="Bachillerato o Preparatoria">
+                                <option label="Lic." value="Licenciatura"> 
+                                <option label="Ing." value="Ingeniería"> 
+                                <option label="Mto." value="Maestría">
+                                <option label="Dr" value="Doctorado">  
+                            </datalist>
+                        <input type="submit" value="Enviar datos">
+                    </form>
+            </article>
+            <article>
+                    <h3>Probando audio y video</h3>
+                    <h4>Prueba de audio, ¡vamos a rockear!</h4>
+                    <audio loop autoplay="autoplay" controls>
+                        <source src="multimedia/son2.mp3" type="audio/mp3"> 
+                    </audio>
+                    <h4>Prueba de video... ¡seguimos rockeando!</h4>
+                    <video width="300" controls loop poster="images/poster.jpeg">
+                        <source src="multimedia/video.mp4" type="video/mp4">
+                        <source src="multimedia/video.ogv" type="video/ogv">
+                        <source src="multimedia/video.webm" type="video/webm">
+                    </video>
+            </article>
+            <article>
+                <h3>Probando formas básicas con SVG</h3>
+                <svg width="300" height="550" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="250" cy="290" rx="290" ry="100" fill="green" />
+                    <line x1="50" y1="50" x2="300" y2="450" style="stroke:yellow; stroke-width: 7;" />
+                    <circle cx="100" cy="150" r="80" fill="red" />
+                    <rect width="200" height="100" fill="blue" />
+                </svg>
+            </article>
+            <article>
+                <h3>Probando video enmascarado por SVG</h3>
+                <video id="videoMask" width="300" controls loop poster="images/poster.jpeg">
+                    <source src="multimedia/video.mp4" type="video/mp4">
+                    <source src="multimedia/video.ogv" type="video/ogv">
+                    <source src="multimedia/video.webm" type="video/webm">
+                </video>
+            </article>
+            <article>
+                <h3>Probando formas básicas de dibujo con Canvas</h3>
+                <canvas width="300" height="550" id="lienzo">
+                    Este canvas no es visible para tu browser, intenta en otro
+                </canvas>
+            </article>
+            <article>
+                    <h3>Probando animación con Canvas</h3>
+                    <canvas width="300" height="550" id="miLienzo">
+                        Este canvas no es visible para tu browser, intenta en otro
+                    </canvas>
+            </article>
+            <article>
+                    <h3>Probando almacenamiento local</h3>
+                    <h4>Prueba de Local Storage</h4>
+                    Ingresa un dato en el siguiente input: 
+                    <input type="text" id="datos" placeholder="mi dato a guardar" autofocus><br>
+                    <input type="button" value="Guardar dato" onclick="almacena();">
+                    <input type="button" value="Traer el dato de vuelta" onclick="obtiene();">
+                    <input type="button" value="Borrar dato" onclick="borra();">
+                    <h4>Prueba de Session Storage</h4>
+                    Ingresa un dato en el siguiente input: 
+                    <input type="text" id="datos_session" placeholder="mi dato a guardar" autofocus><br>
+                    <input type="button" value="Guardar dato" onclick="almacena_session();">
+                    <input type="button" value="Traer el dato de vuelta" onclick="obtiene_session();">
+                    <input type="button" value="Borrar dato" onclick="borra_session();">
+            </article>
+        </section>
+        <footer>
+            <h5 itemscope itemtype="https://schema.org/Person">Cpyright 2019 por <span itemprop="givenName">Saúl Buentello</span>, <span itemprop="jobTitle">Desarrollador Web</span> en <span itemprop="worksFor">KMMX</span>, hijo de <span itemprop="parent">Guillermina Sánchez</span> </h5>
+        </footer>
+    </body>
+</html>
