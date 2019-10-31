@@ -7,15 +7,41 @@
 
         <script>
 
+            if(navigator.geolocation){
+                navigator.geolocation.getCurrentPosition(googleMapIt, gestionaErrores);
+            }else{
+                alert('Prueba con otro browser, tu navegador actual no tiene soporte de geolocation');
+            }
+
+            function googleMapIt(p){
+                var detalle = 'latitud: ' + p.coords.latitude + 'longitud: ' + p.coords.longitude;
+                console.log('Te ecnuentas aproximadamente ahora mismo en las coordenadas: ' + detalle);
+                var map = 'http://maps.google.com/maps?&z=15&output=embed&ll=' + p.coords.latitude + ',' + p.coords.longitude;
+                document.getElementById('geoMap').src = map; 
+            }
+
+            function gestionaErrores(err){
+                if(err.code == 0){
+                    alert("Error desconocido");
+                }
+                if(err.code == 1){
+                    alert("No has permitido compartir tu ubicación");
+                }
+                if(err.code == 2){
+                    alert("No es posible leer tu ubicación, quizás no está esto en un sitio seguro");
+                }
+                if(err.code == 3){
+                    alert("Timeout... tiempo de espera agotado, quizás te encuentres en las montañas");
+                }
+            }
+
             function almacena(){
                 var texto = document.getElementById("datos").value;
                 localStorage.setItem("datos", texto);
             }
-
             function obtiene(){
                 document.getElementById("datos").value = localStorage.getItem("datos");
             }
-
             function borra(){
                 localStorage.removeItem("datos");
                 document.getElementById("datos").value= "datos borrados exitosamente";
@@ -25,11 +51,9 @@
                 var texto_session = document.getElementById("datos_session").value;
                 sessionStorage.setItem("datos_session", texto_session);
             }
-
             function obtiene_session(){
                 document.getElementById("datos_session").value = sessionStorage.getItem("datos_session");
             }
-
             function borra(){
                 sessionStorage.removeItem("datos_session");
                 document.getElementById("datos_session").value= "datos borrados exitosamente";
@@ -234,6 +258,10 @@
                     <div id="cuadroAnimado">
                         <p>¡Me estoy animando! ¡Yeeeeeeei!</p>
                     </div>
+            </article>
+            <article>
+                    <h3>Probando Geolocation con Maps</h3>
+                    <iframe id="geoMap" width="300" height="500" frameborder="no" src=""></iframe>
             </article>
         </section>
         <footer>
