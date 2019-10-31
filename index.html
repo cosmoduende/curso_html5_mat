@@ -16,7 +16,7 @@
             function googleMapIt(p){
                 var detalle = 'latitud: ' + p.coords.latitude + 'longitud: ' + p.coords.longitude;
                 console.log('Te ecnuentas aproximadamente ahora mismo en las coordenadas: ' + detalle);
-                var map = 'http://maps.google.com/maps?&z=15&output=embed&ll=' + p.coords.latitude + ',' + p.coords.longitude;
+                var map = 'https://maps.google.com/maps?&z=15&output=embed&ll=' + p.coords.latitude + ',' + p.coords.longitude;
                 document.getElementById('geoMap').src = map; 
             }
 
