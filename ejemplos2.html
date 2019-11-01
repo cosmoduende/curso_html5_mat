@@ -3,7 +3,9 @@
     <head>
         <meta charset="utf-8">
         <title>Fans Mexas de Nirvana</title>
-        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="css/styles.css" media="screen">
+        <link rel="stylesheet" href="css/styles_print.css" media="print">
+
 
         <script>
             
@@ -65,6 +67,13 @@
                 }
                 esfera.style.top = esfera.position.y + "px";
                 esfera.style.left = esfera.position.x + "px";
+
+                //esfera.style.width = mueveX *5 + "px";
+                //  esfera.style.height = mueveY *5 + "px";
+                esfera.style.boxShadow = ""+ mueveX*10 + "px " + mueveY*20 + "px 20px black";
+
+                console.log(esfera.velocity.x);
+                console.log(esfera.velocity.y);
 
                 requestAnimationFrame(update);
             }
