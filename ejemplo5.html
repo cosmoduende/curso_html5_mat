@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0"> 
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+    <style>
+        .cuadrito{
+            position: absolute;
+            background-color: grey;
+            left: 50px;
+            width: 150px;
+            height: 150px;
+            margin: 5px;
+            font-size: 20px;
+            color: white;
+            z-index: 100000000;
+        }
+    </style>
+
+        <script>
+                $(document).on("pagecreate", function(){
+                    $(".cuadrito").on("swiperight", function(){
+                        $(".cuadrito").animate({"left": "+=40px"},"slow");
+                    });
+                    $(".cuadrito").on("swipeleft", function(){
+                        $(".cuadrito").animate({"left": "-=40px"},"slow");
+                    });
+                    $(".cuadrito").on("taphold", function(){
+                        $(".cuadrito").animate({"width": "+=20px", "height": "+=20px"},"slow");
+                    });
+                    $(".cuadrito").on("tap", function(){
+                        $(".cuadrito").animate({"width": "-=20px", "height": "-=20px"},"slow");
+                    });
+                });
+            </script>
+    </head>
+    <body>
+        <div data-role="page" id="pagina1">
+            <div data-role="header">
+                <h1>Probando capacidades de jQuery Mobile</h1>
+            </div>
+            <div datal-role="main">
+                    <a href="#pagina2" data-role="button" data-transition="flow">Ir a página 2</a>
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#pagina2" data-role="button" data-transition="slidedown" data-icon="grid" > Ir a página 2</a> </li>
+                        <li><a href="#pagina3" data-role="button" data-transition="slidedown" data-icon="grid" > Ir a página 2</a> </li>
+                        <li><a href="#pagina4" data-role="button" data-transition="slidedown" data-icon="grid" > Ir a página 2</a> </li>
+                        <li><a href="#pagina5" data-role="button" data-transition="slidedown" data-icon="grid" > Ir a página 2</a> </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div data-role="page" id="pagina2">
+                <div data-role="header">
+                    <h1>Página 2</h1>
+                </div>
+                <div datal-role="main">
+                        <div class="cuadrito">
+                                <p>Tócame baby!!!</p>
+                        </div>
+                </div>
+                <div data-role="footer" data-position="fixed">
+                    <h4>Copyright 2019 by me</h4>
+                </div>
+        </div>
+
+        <div data-role="page" id="pagina3">
+                <div data-role="header">
+                    <h1>Página 3</h1>
+                </div>
+                <div datal-role="main">
+                        <div data-role="collapsibleset">
+                            <div data-role="collapsible">
+                                <h3>Sección 1</h3>
+                                <p>Este es e contenido del primer elemento colapsable</p>
+                                <a href="#pagina1" data-role="button" data-transition="flip">Regresar a Home</a>
+                            </div>
+                            <div data-role="collapsible">
+                                <h3>Sección 2</h3>
+                                <form>
+                                    <fieldset data-role="controlgroup">
+                                        <input type="checkbox" id="check1">
+                                        <label for="check1">Uno</label>
+                                        <input type="checkbox" id="check2">
+                                        <label for="check2">Dos</label>
+                                    </fieldset>
+                                </form>
+                            </div>
+                            <div data-role="collapsible">
+                                 <h3>Sección 3</h3>
+                                <p>Este es e contenido del primer elemento colapsable</p>
+                                <a href="#pagina1" data-role="button" data-transition="flip">Regresar a Home</a>
+                            </div>
+                        </div>
+                </div>
+                <div data-role="footer" data-position="fixed">
+                    <h4>Copyright 2019 by me</h4>
+                </div>
+        </div>
+
+        <div data-role="page" id="pagina4">
+                <div data-role="header">
+                    <h1>Página 4</h1>
+                </div>
+                <div datal-role="main">
+                    <a href="#elpanel" data-role="button">Desplegar panel</a>    
+                </div>
+                <div data-role="footer" data-position="fixed">
+                    <h4>Copyright 2019 by me</h4>
+                </div>
+                <div id="elpanel" data-role="panel" data-position="left" data-display="overlay">
+                        <input id="filtrando" data-type="search">
+                        <ul data-role="listview" data-inset="true" data-filter="true" data-input="#filtrando">
+                            <li data-role="list-divider">Primeros elementos</li>
+                            <li>México</li>
+                            <li>Argentina</li>
+                            <li>Brasil</li>
+                            <li>Alemania</li>
+                            <li>Tlaxcala</li>
+                            <li data-role="list-divider">Segundos elementos</li>
+                            <li>Korea</li>
+                            <li>Cuba</li>
+                            <li>Afganistán</li>
+                            <li>Irán</li>
+                            <li>Israel</li>
+                            <li><img src="images/camaleon.jpg">
+                                <h2>Título del elemento camaleón</h2>
+                                <p>Podría meter aquí info del elemento camaleón</p>
+                            </li>
+                        </ul>
+                    </div>
+        </div>
+
+
+       
+    </body>
+</html>
