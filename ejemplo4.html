@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    <head>
+            <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+            <style>
+                body, html{
+                    height: 100%;
+                    margin: 0px;
+                    font-size: 15px;
+                    color: #777;
+                }
+
+                .fondoimg_1, .fondoimg_2, .fondoimg_3{
+                    position: relative;
+                    opacity: 0.65;
+                    background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-attachment: fixed;
+                }
+
+                .fondoimg_1{
+                    background-image: url("images/wall1.jpeg");
+                    min-height: 100%;
+                }
+
+                .fondoimg_2{
+                    background-image: url("images/wall2.jpeg");
+                    min-height: 400px;
+                }
+
+                .fondoimg_3{
+                    background-image: url("images/wall3.jpeg");
+                    min-height: 400px;
+                }
+
+                .texto{
+                    position: absolute;
+                    left: 0px;
+                    top: 50%;
+                    width: 100%;
+                    text-align: center;
+                    color: #000;
+                }
+
+                .texto span.border{
+                    background-color: #111;
+                    color: #fff;
+                    padding: 18px;
+                    font-size: 25px;
+                }
+
+                #contenedor1, #contenedor2, #contenedor3{
+                    color: #777;
+                    background-color: white;
+                    text-align: center;
+                    padding: 50px 80px;
+                }
+
+                .cuadrito{
+                    position: absolute;
+                    background-color: grey;
+                    left: 50px;
+                    width: 150px;
+                    height: 150px;
+                    margin: 5px;
+                    font-size: 20px;
+                    color: white;
+                    z-index: 100000000;
+                }
+
+
+            </style>
+
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+        <script>
+            $(document).on("pagecreate", function(){
+                $(".cuadrito").on("swiperight", function(){
+                    $(".cuadrito").animate({"left": "+=40px"},"slow");
+                });
+                $(".cuadrito").on("swipeleft", function(){
+                    $(".cuadrito").animate({"left": "-=40px"},"slow");
+                });
+                $(".cuadrito").on("taphold", function(){
+                    $(".cuadrito").animate({"width": "+=20px", "height": "+=20px"},"slow");
+                });
+                $(".cuadrito").on("tap", function(){
+                    $(".cuadrito").animate({"width": "-=20px", "height": "-=20px"},"slow");
+                });
+            });
+        </script>
+
+    </head>
+    <body>
+        <div class="fondoimg_1">
+            <div class="texto">
+                <span class="border">¡BIENVENIDO DE NUEVO!</span>
+            </div>
+        </div>
+        <div id="contenedor1">
+            <h3 style="text-align: center;"> ¡Este es un demo de Parallax!</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sit amet condimentum mi, suscipit tincidunt ante. Proin lacinia vulputate nisl non tempus. Donec scelerisque sed purus mattis iaculis. Phasellus quis scelerisque dolor. Aliquam erat volutpat. Mauris sit amet facilisis ligula. Integer condimentum lorem id tempor pellentesque. Suspendisse faucibus magna vitae leo fermentum efficitur. Nunc molestie diam quis justo euismod sodales vitae sit amet ipsum. Integer vulputate nisi et ex bibendum finibus. Duis vestibulum diam augue, sit amet rhoncus ex lacinia sed. Vivamus hendrerit ligula sit amet est placerat tincidunt.</p>
+            <div class="cuadrito">
+                <p>Tócame baby!!!</p>
+            </div>
+        </div>
+        <div class="fondoimg_2">
+            <div class="texto">
+                <span class="border" style="background-color: transparent; font-size:25px; color:#FFF"> SIGUE HACIENDO SCROLL... </span>
+            </div>
+        </div>
+        <div style="position:relative;">
+            <div id="contenedor2">
+                <p>Sigue así muchacho, sigue haciendo scroll, para abajo!!!</p>
+            </div>
+        </div>
+        <div class="fondoimg_3">
+                <div class="texto">
+                    <span class="border" style="background-color: transparent; font-size:25px; color:#FFF"> SIGUE HACIENDO SCROLL UNA VEZ MÁS... </span>
+                </div>
+        </div>
+        <div style="position:relative;">
+                <div id="contenedor3">
+                    <p>Ya casi llegas, venga venga vengaaa !!!!</p>
+                </div>
+        </div>
+        <div class="fondoimg_1">
+                <div class="texto">
+                    <span class="border">YEAHHH BABY YA LLEGASTE!!!!</span>
+                </div>
+        </div>
+    </body>
+</html>
